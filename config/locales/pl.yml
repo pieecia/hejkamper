@@ -1,0 +1,136 @@
+pl:
+  activerecord:
+    errors:
+      models:
+        vehicle_feature:
+          attributes:
+            feature_id:
+              already_added: "To udogodnienie jest już dodane do tego pojazdu"
+  features:
+    fridge: "Lodówka"
+    stove: "Kuchenka"
+    toilet: "Toaleta"
+    shower: "Prysznic"
+    heating: "Ogrzewanie"
+    air_conditioning: "Klimatyzacja"
+    tv: "TV"
+    wifi: "WiFi"
+    solar_panel: "Panel słoneczny"
+    awning: "Markiza"
+    bikes: "Rowery"
+    outdoor_table: "Stolik zewnętrzny"
+    camping_chairs: "Krzesła kempingowe"
+    kitchenware: "Naczynia kuchenne"
+    bedding: "Pościel"
+    towels: "Ręczniki"
+  listings:
+    index:
+      missing_params: "Proszę wybrać datę i miasto, aby rozpocząć wyszukiwanie."
+      date_in_past: "Data nie może być w przeszłości. Proszę wybrać przyszłą datę."
+      invalid_date_format: "Nieprawidłowy format daty. Proszę spróbować ponownie."
+  profiles:
+    edit:
+      title: "Edytuj profil"
+      phone_number: "Numer telefonu"
+      bio: "Bio"
+      avatar: "Avatar"
+      save: "Zapisz"
+      phone_placeholder: "+48 600 700 800"
+      bio_placeholder: "Krótko o mnie"
+    show:
+      title: "Mój profil"
+      edit_profile: "Edytuj profil"
+      renter: "Najemca"
+      owner: "Właściciel"
+      update_failed: "Nie udało się zaktualizować profilu"
+      updated: "Profil zaktualizowany"
+  vehicles:
+    create:
+      vehicle_created: "Pojazd został pomyślnie dodany."
+      vehicle_creation_failed: "Nie udało się dodać pojazdu."
+    update:
+      vehicle_updated: "Pojazd został pomyślnie zaktualizowany."
+      vehicle_update_failed: "Nie udało się zaktualizować pojazdu."
+    destroy:
+      vehicle_destroyed: "Pojazd został usunięty."
+      vehicle_destruction_failed: "Nie udało się usunąć pojazdu."
+    forbidden: "Dostęp jest ograniczony dla zarejestrowanych osób jako wynajmujący"
+    not_found: "Nie znaleziono auta"
+    form:
+      images: "Zdjęcia (max 3, do 5MB każde)"
+      name: "Tytuł ogłoszenia"
+      description: "Opis"
+      brand: "Marka"
+      model: "Model"
+      year: "Rok produkcji"
+      length: "Długość w metrach"
+      city: "Miasto"
+      location: "Dokładny adres"
+      available_from: "Dostępność"
+      price: "Cena"
+      sleeps: "Liczba miejsc do spania"
+      beds: "Liczba łóżek"
+      transmission: "Skrzynia biegów"
+      fuel_type: "Rodzaj paliwa"
+      features: "Udogodnienia"
+      select: "Wybierz"
+      name_placeholder: "np. Komfortowy kamper rodzinny Fiat Ducato"
+      description_placeholder: "Dokładny opis"
+      brand_placeholder: "np. Fiat"
+      model_placeholder: "np. California"
+      year_placeholder: "np. 2020"
+      length_placeholder: "Podaj cyfre w metrach"
+      city_placeholder: "np. Kraków"
+      location_placeholder: "np. Warszawa, Główna 1"
+      available_from_placeholder: "Od kiedy jest dostępny?"
+      price_placeholder: "Jaka jest cena za dobę"
+    index:
+      title: "Nazwa Auta"
+      action: "Akcja"
+      edit: "Edytuj"
+      delete: "Usuń"
+      delete_confirm: "Czy na pewno chcesz usunąć ten pojazd?"
+      add_new: "Dodaj nowy pojazd"
+    new:
+      back: "← Wróc do wszystkich pojazdów"
+      title: "Dodaj kampera"
+      submit: "Dodaj swój pojazd"
+    edit:
+      back: "← Wróc do wszystkich pojazdów"
+      title: "Edytuj kampera"
+      submit: "Zaktualizuj swój pojazd"
+    show:
+      owner: "Właściciel"
+  navbar:
+    profile: "Profil"
+    vehicles: "Pojazdy"
+    logout: "Wyloguj"
+    login: "Zaloguj się"
+    signup: "Zarejestruj się"
+    my_account: "Moje konto"
+  pages:
+    home:
+      title: "Witaj w Hejkamper!"
+      description: "Na naszej platformie, możesz wyszukać idealnego kampera na swoją przygodę lub wynająć swój pojazd innym entuzjastom podróży. Dołącz do naszej społeczności już dziś i zacznij odkrywać świat na czterech kółkach!"
+      search_title: "Szukaj Kampera"
+      date: "Data"
+      city: "Miasto"
+      search: "Szukaj"
+      faq_gems: "Z jakich gemów korzysta Hejkamper?"
+      faq_gems_description: "Hejkamper korzysta z Ruby on Rails, Tailwind CSS, Devise, Active Admin oraz kilku innych gemów, które pomagają w tworzeniu funkcjonalnej i estetycznej aplikacji webowej."
+      faq_real: "Czy to jest realna aplikacja?"
+      faq_real_description: "Nie, Hejkamper to projekt demonstracyjny stworzony w celach edukacyjnych i prezentacyjnych. Nie oferuje rzeczywistych usług wynajmu kamperów."
+      recently_added: "Ostatnio dodane kampery"
+      per_day: " / dzień"
+  devise:
+    passwords:
+      new:
+        title: "Zapomniałeś hasła?"
+        email: "Email"
+        submit: "Wyślij instrukcje resetowania hasła"
+      edit:
+        title: "Zmień hasło"
+        new_password: "Nowe hasło"
+        confirm_password: "Potwierdź nowe hasło"
+        minimum_length: "znaków minimum"
+        submit: "Zmień hasło"

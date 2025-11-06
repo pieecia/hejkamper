@@ -1,0 +1,80 @@
+<div class="container mx-auto flex-col flex max-w-[980px] px-6">
+  <section id="main-form" class="w-full pt-6 md:pt-12">
+    <div class="grid gap-6 md:gap-10">
+      <div>
+        <h1 class="text-3xl mb-4 font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]">
+          <%= t(".title") %>
+        </h1>
+        <div class="max-w-[750px] text-lg text-muted-foreground sm:text-xl">
+          <%= t(".description") %>
+        </div>
+      </div>
+      <div>
+        <%= render_card title: t(".search_title"), class: "w-full" do %>
+          <div class="p-6 pt-0">
+            <%= form_with url: listings_path, method: :get do |_| %>
+              <div class="grid gap-4 md:grid-cols-3 items-end">
+                <div class="flex flex-col space-y-1.5">
+                  <%= render_label name: "date",
+                                   label: t(".date"),
+                                   class: "block text-left w-full" %>
+
+                  <%= render_input name: "date", id: "date", type: "date", autocomplete: false, required: true %>
+                </div>
+                <div class="flex flex-col space-y-1.5">
+                  <%= render_label name: "city",
+                                   label: t(".city"),
+                                   class: "block text-left w-full" %>
+
+                  <%= render_select name: "city", selected: "Warszawa", required: true do |select| %>
+                    <%= select.option label: "Warszawa", value: "Warszawa" %>
+                    <%= select.option label: "Gdańsk", value: "Gdańsk" %>
+                    <%= select.option label: "Kraków", value: "Kraków" %>
+                  <% end %>
+                </div>
+                <%= render_button t(".search") %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+  <section class="w-full pb-6 md:py-12">
+    <div class="md:grid md:grid-cols-4">
+      <aside class="sidebar md:col-span-1">
+        <%= render_accordion title: t(".faq_gems"),
+                             description: t(".faq_gems_description") %>
+
+        <%= render_accordion title: t(".faq_real"),
+                             description: t(".faq_real_description") %>
+      </aside>
+      <div class="content col-span-3 md:pl-8">
+        <h2 class="mb-4 mt-6 md:mt-0 text-2xl font-semibold"><%= t(".recently_added") %></h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <% @recent_vehicles.each do |vehicle| %>
+            <%= render_card title: link_to(vehicle.name, vehicle),
+                class: "w-100",
+                subtitle: vehicle.location,
+                footer: number_to_currency(vehicle.price,
+                                           unit: "zł",
+                                           precision: 0,
+                                           format: "%n %u") + t(".per_day") do %>
+              <div class="pb-3 px-6">
+                <% if vehicle.images.attached? %>
+                  <% image = vehicle.images.first %>
+
+                  <%= image_tag image.variant(resize_to_fill: [300, 300]),
+                                alt: vehicle.name,
+                                class: "rounded-lg object-fill",
+                                width: 300,
+                                height: 300 %>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

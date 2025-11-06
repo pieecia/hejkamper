@@ -1,0 +1,45 @@
+<div class="container mx-auto flex-col flex max-w-[980px] px-6 md:px-0">
+  <%= render_table class: "mt-6" do %>
+    <%= table_head do %>
+      <%= table_header "", class: "w-1" %>
+      <%= table_header t(".title") %>
+      <%= table_header t(".action"), class: 'w-[250px]' %>
+    <% end %>
+    <%= table_body do %>
+      <% if @my_vehicles %>
+        <% @my_vehicles.each.with_index do |v| %>
+                <%= table_row do %>
+                  <%= table_column class: "text-xl" do %>
+                    🚐
+                  <% end %>
+                  <%= table_column do %>
+                    <% link_to v[:name], vehicle_path(v) %>
+                  <% end %>
+                  <%= table_column do %>
+                    <%= render_button t(".edit"),
+                                      as: :link,
+                                      href: edit_vehicle_path(v),
+                                      variant: :secondary %>
+                    <%= render_button t(".delete"),
+                                      as: :link,
+                                      href: vehicle_path(v),
+                                      variant: :destructive,
+                                      data: {
+                                        turbo_method: :delete,
+                                        turbo_confirm: t(".delete_confirm")
+                                      } %>
+                  <% end %>
+                <% end %>
+              <% end %>
+          <%= table_row do %>
+            <%= table_column colspan: 3, class: "text-center" do %>
+              <%= render_button t(".add_new"),
+                                variant: :ghost,
+                                as: :link,
+                                href: new_vehicle_path %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+  <% end %>
+</div>

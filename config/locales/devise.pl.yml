@@ -1,0 +1,10 @@
+pl:
+  devise:
+    shared:
+      links:
+        log_in: "Zaloguj się"
+        sign_up: "Zarejestruj się"
+        forgot_password: "Zapomniałeś hasła?"
+        didnt_receive_confirmation: "Nie otrzymałeś instrukcji potwierdzających?"
+        didnt_receive_unlock: "Nie otrzymałeś instrukcji odblokowujących?"
+        sign_in_with_provider: "Zaloguj się przez %{provider}"

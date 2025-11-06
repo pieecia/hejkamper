@@ -1,0 +1,3 @@
+<% flash.each do |type, message| %>
+  <%= render_toast variant: (type == "notice" ? :success : :destructive), header: message %>
+<% end %>

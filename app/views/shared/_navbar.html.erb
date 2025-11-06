@@ -1,0 +1,37 @@
+<nav class="bg-white border-gray-200 ">
+  <div class="max-w-[980px] flex flex-wrap items-center justify-between mx-auto py-4 px-6">
+    <%= link_to "Hejkamper 🚐", root_path, class: "flex items-center space-x-3 self-center text-2xl font-semibold whitespace-nowrap dark:text-white" %>
+
+    <% if user_signed_in? %>
+      <div>
+      </div>
+      <div class="flex items-center space-x-4">
+        <%= render_dropdown_menu do %>
+          <%= dropdown_menu_trigger do %>
+            <%= render_button svg_icon('avatar', class: 'shrink-0 w-7 h-7'), variant: :secondary %>
+          <% end %>
+          <%= dropdown_menu_content do %>
+            <%= dropdown_menu_label t("navbar.my_account") %>
+            <%= render_separator class: "my-1" %>
+            <%= dropdown_menu_item do %>
+              <%= link_to t("navbar.profile"), profile_path %>
+            <% end %>
+            <% if current_user.role == "owner" %>
+              <%= dropdown_menu_item  do %>
+                <%= link_to t("navbar.vehicles"), vehicles_path %>
+              <% end %>
+            <% end %>
+            <%= dropdown_menu_item  do %>
+              <%= button_to t("navbar.logout"), destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <span class="flex gap-2 items-center">
+        <%= render_button t("navbar.login"), variant: :secondary, as: :link, href: new_user_session_path %>
+        <%= render_button t("navbar.signup"), as: :link, href: new_user_registration_path %>
+      </span>
+    <% end %>
+  </div>
+</nav>

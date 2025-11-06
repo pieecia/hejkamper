@@ -1,0 +1,33 @@
+<div class="container mx-auto flex max-w-[980px] px-6 md:px-0 justify-center">
+  <%= render_card title: t(".title"), class: "w-[550px] mt-6" do %>
+    <%= render_form_with(model: @user, url: profile_path, method: :patch, html: { multipart: true, class: "w-full px-6 pb-6" }) do |form| %>
+      <div class="grid grid-cols-3 items-baseline mb-4">
+        <%= form.label :phone_number, label: t(".phone_number"), class: "text-right mr-4 text-lg" %>
+        <%= form.text_field :phone_number, placeholder: t(".phone_placeholder"), class: "col-span-2" %>
+      </div>
+
+      <div class="grid grid-cols-3 items-baseline mb-4">
+        <%= form.label :bio, label: t(".bio"), class: "text-right mr-4 text-lg" %>
+        <%= form.text_area :bio, placeholder: t(".bio_placeholder"), rows: 6, class: "col-span-2" %>
+      </div>
+
+      <div class="grid grid-cols-3 items-baseline mb-4">
+        <%= form.label :avatar, label: t(".avatar"), class: "text-right mr-4 text-lg" %>
+        <div class="col-span-2">
+          <% if @user.avatar.attached? %>
+            <div class="mb-3">
+              <%= image_tag @user.avatar.variant(resize_to_fill: [96, 96]), class: "rounded-full w-24 h-24 object-cover" %>
+            </div>
+          <% end %>
+          <%= form.file_field :avatar, accept: "image/*" %>
+        </div>
+      </div>
+
+      <div class="text-right mt-6">
+        <%= form.submit t(".save") %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+

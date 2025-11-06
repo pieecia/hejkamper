@@ -1,0 +1,35 @@
+<% @badge_text = @user.role == "renter" ? t(".renter") : t(".owner") %>
+
+<div class="container mx-auto flex max-w-[980px] px-6 md:px-0 justify-center">
+  <%= render_card title: t(".title"), class: "w-[550px] mt-6" do %>
+    <div class="flex gap-4 px-6 pb-6">
+      <div class="flex-shrink-0">
+        <% if @user.avatar.attached? %>
+          <%= image_tag @user.avatar.variant(resize_to_fill: [96, 96]), class: "rounded-full w-24 h-24 object-cover shrink-0" %>
+        <% else %>
+          <div class="rounded-full w-24 h-24 bg-gray-200"></div>
+        <% end %>
+      </div>
+      <div class="flex flex-col mr-auto justify-between">
+        <div>
+          <%= render_badge text: @badge_text, variant: :outline %>
+          <h5 class="text-lg font-semibold mt-1"><%= @user.email %></h5>
+        </div>
+        <% if @user.phone_number.present? %>
+          <div class="flex gap-x-1 items-center text-gray-500 text-sm">
+            <%= svg_icon('phone', class: 'shrink-0 w-3 h-3') %>
+            <p><%= @user.phone_number %></p>
+          </div>
+        <% end %>
+      </div>
+      <div class="hidden sm:flex items-center">
+        <%= render_button text: t(".edit_profile"), as: :link, href: edit_profile_path %>
+      </div>
+    </div>
+    <div class="sm:hidden px-6 pb-6">
+      <%= render_button text: t(".edit_profile"), class: "w-100 flex", as: :link, href: edit_profile_path %>
+    </div>
+<% end %>
+</div>
+
+

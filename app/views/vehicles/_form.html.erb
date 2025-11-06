@@ -1,0 +1,113 @@
+<%= render_card title: title, class: "w-full mb-6" do %>
+  <%= render_form_for(@vehicle, class: "w-full") do |form| %>
+    <div class="px-6">
+
+      <div class="grid grid-cols-3 items-baseline mb-4">
+        <%= form.label :images, label: t(".images"), class: "text-right mr-4 text-lg" %>
+        <div class="col-span-2">
+          <%= form.file_field :images, multiple: true, accept: "image/png,image/jpeg,image/jpg,image/webp" %>
+
+          <% unless @vehicle.errors.any? %>
+            <% if vehicle.images.attached? %>
+              <div class="flex gap-2 mt-4">
+                <% vehicle.images.each do |image| %>
+                  <%= image_tag image.variant(resize_to_fill: [200, 200]), width: 200, height: 200, class: "rounded-lg object-cover" %>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 items-baseline mb-4">
+        <%= form.label :name, label: t(".name"), class: "text-right mr-4 text-lg" %>
+        <%= form.text_field :name, placeholder: t(".name_placeholder"), class: "col-span-2" %>
+      </div>
+      <div class="grid grid-cols-3 items-baseline mb-4">
+        <%= form.label :description, label: t(".description"), class: "text-right mr-4 text-lg" %>
+        <%= form.text_area :description, placeholder: t(".description_placeholder"), rows: 7, class: "col-span-2" %>
+      </div>
+      <div class="grid grid-cols-3 items-baseline mb-4">
+        <%= form.label :brand, label: t(".brand"), class: "text-right mr-4 text-lg" %>
+        <%= form.text_field :brand, placeholder: t(".brand_placeholder"), class: "col-span-2" %>
+      </div>
+      <div class="grid grid-cols-3 items-baseline mb-4">
+        <%= form.label :model, label: t(".model"), class: "text-right mr-4 text-lg" %>
+        <%= form.text_field :model, placeholder: t(".model_placeholder"), class: "col-span-2" %>
+      </div>
+      <div class="grid grid-cols-3 items-baseline mb-4">
+        <%= form.label :year, label: t(".year"), class: "text-right mr-4 text-lg" %>
+        <%= form.number_field :year,
+                              min: 1980,
+                              max: Date.current.year + 1,
+                              placeholder: t(".year_placeholder"),
+                              class: "col-span-2" %>
+      </div>
+      <div class="grid grid-cols-3 items-baseline mb-4">
+        <%= form.label :length, label: t(".length"), class: "text-right mr-4 text-lg" %>
+        <%= form.number_field :length, placeholder: t(".length_placeholder"), class: "col-span-2" %>
+      </div>
+      <%= render_separator class: "my-6" %>
+      <div class="grid grid-cols-3 items-baseline mb-4">
+        <%= form.label :city, label: t(".city"), class: "text-right mr-4 text-lg" %>
+        <%= form.text_field :city, placeholder: t(".city_placeholder"), class: "col-span-2" %>
+      </div>
+      <div class="grid grid-cols-3 items-baseline mb-4">
+        <%= form.label :location, label: t(".location"), class: "text-right mr-4 text-lg" %>
+        <%= form.text_field :location, placeholder: t(".location_placeholder"), class: "col-span-2" %>
+      </div>
+      <%= render_separator class: "my-6" %>
+      <div class="grid grid-cols-3 items-baseline mb-4">
+        <%= form.label :available_from, label: t(".available_from"), class: "text-right mr-4 text-lg" %>
+        <%= form.date_field :available_from, placeholder: t(".available_from_placeholder"), class: "col-span-2" %>
+      </div>
+      <div class="grid grid-cols-3 items-baseline mb-4">
+        <%= form.label :price, label: t(".price"), class: "text-right mr-4 text-lg" %>
+        <%= form.text_field :price, placeholder: t(".price_placeholder"), class: "col-span-2" %>
+      </div>
+      <%= render_separator class: "my-6" %>
+      <div class="grid grid-cols-3 items-baseline mb-4">
+        <%= form.label :sleeps, label: t(".sleeps"), class: "text-right mr-4 text-lg" %>
+        <%= form.number_field :sleeps,
+                              min: 1,
+                              max: 10,
+                              class: "col-span-2" %>
+      </div>
+      <div class="grid grid-cols-3 items-baseline mb-4">
+        <%= form.label :beds, label: t(".beds"), class: "text-right mr-4 text-lg" %>
+        <%= form.number_field :beds,
+                              min: 1,
+                              max: 10,
+                              class: "col-span-2" %>
+      </div>
+      <div class="grid grid-cols-3 items-baseline mb-4">
+        <%= form.label :transmission, label: t(".transmission"), class: "text-right mr-4 text-lg" %>
+        <%= form.select :transmission,
+                        options_for_select(Vehicle::TRANSMISSIONS, @vehicle.transmission),
+                        { include_blank: t(".select") },
+                        class: "h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm transition-colors ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 col-span-2 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:border-muted col-span-2" %>
+      </div>
+      <div class="grid grid-cols-3 items-baseline mb-4">
+        <%= form.label :fuel_type, label: t(".fuel_type"), class: "text-right mr-4 text-lg" %>
+        <%= form.select :fuel_type,
+                        options_for_select(Vehicle::FUEL_TYPES, @vehicle.fuel_type),
+                        { include_blank: t(".select") },
+                        class: "h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm transition-colors ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 col-span-2 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:border-muted col-span-2" %>
+      </div>
+      <div class="grid grid-cols-3 items-baseline mb-4">
+        <%= form.label :feature_ids, label: t(".features"), class: "text-right mr-4 text-lg" %>
+        <div class="col-span-2 grid grid-cols-2">
+          <%= form.collection_check_boxes :feature_ids, Feature.all, :id, :name do |b| %>
+            <div class="flex gap-2 items-center">
+              <%= b.check_box %>
+              <%= b.label { b.text } %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <%= render_separator class: "my-6" %>
+      <div class="text-right mb-6">
+        <%= form.submit submit_text %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

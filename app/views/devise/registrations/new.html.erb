@@ -1,0 +1,72 @@
+<div class="container mx-auto flex max-w-[980px] px-6 md:px-0 justify-center">
+  <div class="flex-col">
+    <div class="mt-6">
+      <%= render_card title: "Chce dołączyć", class: "w-[550px]" do %>
+        <div class="px-6 pb-4">
+          <%= render_tabs do %>
+            <%= tab_list do %>
+              <%= tab "🚐 Wynajmuje kampera" %>
+              <%= tab "🔍 Szukam Kampera", active: true %>
+            <% end %>
+            <%= tab_panels do %>
+              <%= tab_panel do %>
+                <div class="py-2">
+                  <%= render_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
+                    <div class="mb-4">
+                      <%= render "devise/shared/error_messages", resource: resource %>
+                    </div>
+                    <%= form.hidden_field :role, value: "owner" %>
+                    <div class="grid grid-cols-3 items-baseline mb-4">
+                      <%= form.label :email, class: "text-right mr-4 text-lg" %>
+                      <%= form.text_field :email, class: "col-span-2" %>
+                    </div>
+                    <div class="grid grid-cols-3 items-baseline mb-4">
+                      <%= form.label :password, class: "text-right mr-4 text-lg" %>
+                      <%= form.password_field :password, class: "col-span-2" %>
+                    </div>
+                    <div class="grid grid-cols-3 items-baseline mb-8">
+                      <%= form.label :password_confirmation, class: "text-right mr-4 text-lg" %>
+                      <%= form.password_field :password_confirmation, class: "col-span-2" %>
+                    </div>
+                    <div class="flex justify-center">
+                      <%= form.submit "Zarejestruj się" %>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+              <%= tab_panel active: true do %>
+                <div class="py-2">
+                  <%= render_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
+                    <div class="mb-4">
+                      <%= render "devise/shared/error_messages", resource: resource %>
+                    </div>
+                    <%= form.hidden_field :role, value: "renter" %>
+                    <div class="grid grid-cols-3 items-baseline mb-4">
+                      <%= form.label :email, class: "text-right mr-4 text-lg" %>
+                      <%= form.text_field :email, class: "col-span-2" %>
+                    </div>
+                    <div class="grid grid-cols-3 items-baseline mb-4">
+                      <%= form.label :password, class: "text-right mr-4 text-lg" %>
+                      <%= form.password_field :password, class: "col-span-2" %>
+                    </div>
+                    <div class="grid grid-cols-3 items-baseline mb-8">
+                      <%= form.label :password_confirmation, class: "text-right mr-4 text-lg" %>
+                      <%= form.password_field :password_confirmation, class: "col-span-2" %>
+                    </div>
+                    <div class="flex justify-center">
+                      <%= form.submit "Zarejestruj się" %>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="mt-6">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
+
