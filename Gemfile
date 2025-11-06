@@ -47,7 +47,7 @@ gem "devise"
 gem 'devise-i18n'
 
 # Tailwind CSS framework integration for Rails
-gem 'tailwindcss-rails', '~> 3.3', '>= 3.3.2'
+gem 'tailwindcss-rails', '~> 4.4'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
