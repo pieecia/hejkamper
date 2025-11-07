@@ -13,7 +13,9 @@
       <div class="flex flex-col mr-auto justify-between">
         <div>
           <%= render_badge text: @badge_text, variant: :outline %>
-          <h5 class="text-lg font-semibold mt-1"><%= @user.email %></h5>
+          <h5 class="text-lg font-semibold mt-1">
+            <%= truncate(@user.email, length: 25) %>
+          </h5>
         </div>
         <% if @user.phone_number.present? %>
           <div class="flex gap-x-1 items-center text-gray-500 text-sm">
@@ -22,7 +24,7 @@
           </div>
         <% end %>
       </div>
-      <div class="hidden sm:flex items-center">
+      <div class="hidden sm:flex items-center flex-shrink-0">
         <%= render_button text: t(".edit_profile"), as: :link, href: edit_profile_path %>
       </div>
     </div>

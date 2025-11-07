@@ -109,8 +109,8 @@ en:
       model_placeholder: "e.g. California"
       year_placeholder: "e.g. 2020"
       length_placeholder: "Enter number in meters"
-      city_placeholder: "e.g. Krakow"
-      location_placeholder: "e.g. Warsaw, Main St 1"
+      city_placeholder: "e.g. Warszawa"
+      location_placeholder: "e.g. Warszawa, Główna 1"
       available_from_placeholder: "Available from?"
       price_placeholder: "Price per day"
     index:

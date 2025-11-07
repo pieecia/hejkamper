@@ -80,7 +80,7 @@ pl:
       model_placeholder: "np. California"
       year_placeholder: "np. 2020"
       length_placeholder: "Podaj cyfre w metrach"
-      city_placeholder: "np. Kraków"
+      city_placeholder: "np. Warszawa"
       location_placeholder: "np. Warszawa, Główna 1"
       available_from_placeholder: "Od kiedy jest dostępny?"
       price_placeholder: "Jaka jest cena za dobę"
