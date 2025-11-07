@@ -1,4 +1,4 @@
-<nav class="bg-white border-gray-200 ">
+<nav class="bg-white border-gray-200" data-controller="navbar" data-navbar-state-value="false">
   <div class="max-w-[980px] flex flex-wrap items-center justify-between mx-auto py-4 px-6">
     <%= link_to "Hejkamper 🚐", root_path, class: "flex items-center space-x-3 self-center text-2xl font-semibold whitespace-nowrap dark:text-white" %>
 
@@ -28,10 +28,24 @@
         <% end %>
       </div>
     <% else %>
-      <span class="flex gap-2 items-center">
+      <div class="sm:hidden">
+        <button class="text-gray-500 block"
+                type="button"
+                data-action="click->navbar#toggle">
+          <svg class="h-8 w-8 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path data-navbar-target="x"    stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" class="hidden" />
+            <path data-navbar-target="bars" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+      <span class="hidden sm:flex gap-2 items-center">
         <%= render_button t("navbar.login"), variant: :secondary, as: :link, href: new_user_session_path %>
         <%= render_button t("navbar.signup"), as: :link, href: new_user_registration_path %>
       </span>
     <% end %>
+  </div>
+  <div class="hidden flex flex-col gap-y-1.5 px-6 pb-3" data-navbar-target="menu">
+    <%= render_button t("navbar.login"), variant: :secondary, as: :link, href: new_user_session_path %>
+    <%= render_button t("navbar.signup"), as: :link, href: new_user_registration_path %>
   </div>
 </nav>
