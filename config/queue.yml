@@ -17,4 +17,6 @@ test:
 production:
   <<: *default
   adapter: solid_queue
-  database: production
+  connects_to:
+    database:
+      writing: queue
