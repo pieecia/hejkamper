@@ -16,7 +16,3 @@ test:
 
 production:
   <<: *default
-  adapter: solid_queue
-  connects_to:
-    database:
-      writing: queue
