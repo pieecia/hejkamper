@@ -1,13 +1,13 @@
 <% if @vehicles.any? %>
   <div class="grid grid-cols-6">
-    <aside class="listing col-span-2 overflow-y-auto h-[calc(100vh-72px)]">
+    <aside class="listing col-span-6 lg:col-span-3 xl:col-span-2 overflow-y-auto h-[calc(100vh-72px)]">
       <div class="p-6">
         <h2 class="mb-4 text-2xl font-semibold">Znalezione pojazdy (<%= @vehicles.count %>)</h2>
         <% @vehicles.each do |vehicle| %>
           <%= render_card title: link_to(vehicle.name, vehicle),
                           subtitle: vehicle.location,
                           class: "w-100 mb-4" do  %>
-            <div class="grid grid-cols-6 px-6 gap-4">
+            <div class="grid grid-cols-6 px-6 pb-6 gap-4">
               <div class="col-span-2">
                 <% if vehicle.images.attached? %>
                   <% image = vehicle.images.first %>
@@ -34,7 +34,7 @@
         <% end %>
       </div>
     </aside>
-    <div class="col-span-4 h-[calc(100vh-72px)]"
+    <div class="hidden lg:block lg:col-span-3 xl:col-span-4 h-[calc(100vh-72px)]"
          data-controller="vehicles-map"
          data-vehicles-map-vehicles-value="<%= @vehicles_map_json %>"
     ></div>
