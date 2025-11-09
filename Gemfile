@@ -84,3 +84,5 @@ gem "openssl"
 # Provides higher-level image processing helpers that are needed when handling image uploads.
 gem "image_processing"
 
+# Cloudinary for images
+gem "cloudinary"

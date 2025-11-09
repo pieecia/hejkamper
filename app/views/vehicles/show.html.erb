@@ -21,8 +21,8 @@
       <% end %>
     </div>
   <% end %>
-  <div class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-4">
-    <div class="col-span-2">
+  <div class="mt-6 md:grid md:grid-cols-3 gap-4">
+    <div class="md:col-span-2">
       <h1 class="text-3xl mb-4 font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]">
         <%= @vehicle.name %>
       </h1>
@@ -46,7 +46,7 @@
       <%= render_separator class: "my-6" %>
 
     </div>
-    <div class="col-span-1">
+    <div class="md:col-span-1">
       <div class="rounded-lg border p-4 mb-6">
         <h3 class="font-semibold mb-3"><%= t(".owner") %></h3>
         <div class="flex items-center space-x-3">
